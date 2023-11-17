@@ -23,7 +23,6 @@ import { saveUserIdentity } from './saveUserIdentity';
 import { setEmail } from './setEmail';
 import { setStatusText } from './setStatusText';
 import { setUserAvatar } from './setUserAvatar';
-import { debug } from 'console';
 
 const MAX_BIO_LENGTH = 260;
 const MAX_NICKNAME_LENGTH = 120;
