@@ -8,6 +8,8 @@ on:
   push:
     branches:
       - develop
+  issue_comment:
+    types: [created]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -413,7 +415,7 @@ jobs:
     name: 🚢 Build Docker Image (preview)
     runs-on: ubuntu-20.04
     needs: [build, checks, release-versions]
-    if: github.event_name == 'release' || github.ref == 'refs/heads/develop'
+    if: github.event_name == 'release' || github.ref == 'refs/heads/develop' || (github.event.issue.pull_request && contains(github.event.comment.body, 'publish docker image'))
     steps:
       - uses: actions/checkout@v3
 
