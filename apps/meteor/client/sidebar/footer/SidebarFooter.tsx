@@ -13,7 +13,8 @@ const SidebarFooter = (): ReactElement => {
 		return <VoipFooter />;
 	}
 
-	return <SidebarFooterDefault />;
+	// Don't want to have default sidebar footer
+	return <></>;
 };
 
 export default SidebarFooter;
