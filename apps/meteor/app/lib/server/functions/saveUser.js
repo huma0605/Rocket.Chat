@@ -421,11 +421,6 @@ export const saveUser = async function (userId, userData) {
 		updateUser.$set['emails.0.verified'] = userData.verified;
 	}
 
-	if (!updateUser.$set.customFields) {
-		updateUser.$set.customFields = {};
-	}
-	updateUser.$set.customFields.messageToAgents = {};
-
 	await Users.updateOne({ _id: userData._id }, updateUser);
 
 	// App IPostUserUpdated event hook
