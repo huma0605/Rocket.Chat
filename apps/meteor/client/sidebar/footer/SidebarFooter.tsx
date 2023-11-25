@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import React from 'react';
 
 import { useIsCallEnabled, useIsCallReady } from '../../contexts/CallContext';
-import SidebarFooterDefault from './SidebarFooterDefault';
 import { VoipFooter } from './voip';
 
 const SidebarFooter = (): ReactElement => {
@@ -13,7 +12,8 @@ const SidebarFooter = (): ReactElement => {
 		return <VoipFooter />;
 	}
 
-	return <SidebarFooterDefault />;
+	// Don't want to have default sidebar footer
+	return <></>;
 };
 
 export default SidebarFooter;
