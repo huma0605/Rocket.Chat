@@ -5556,6 +5556,8 @@
   "View_Logs": "View Logs",
   "View_original": "View Original",
   "View_the_Logs_for": "View the logs for: \"{{name}}\"",
+  "view-gpts-home": "View GPTs Home Page",
+  "view-gpts-home_description": "View GPTs Home Page",
   "view-all-teams": "View All Teams",
   "view-all-teams_description": "Permission to view all teams",
   "view-all-team-channels": "View All Team Channels",
