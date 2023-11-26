@@ -1,6 +1,6 @@
 import { Box } from '@rocket.chat/fuselage';
 import { VerticalWizardLayout, VerticalWizardLayoutTitle, VerticalWizardLayoutFooter } from '@rocket.chat/layout';
-import { useSetting, useAssetWithDarkModePath } from '@rocket.chat/ui-contexts';
+import { useAssetWithDarkModePath } from '@rocket.chat/ui-contexts';
 import type { ReactElement, ReactNode } from 'react';
 
 import LoginSwitchLanguageFooter from '../components/LoginSwitchLanguageFooter';
@@ -9,7 +9,8 @@ import { RegisterTitle } from '../components/RegisterTitle';
 
 const VerticalTemplate = ({ children }: { children: ReactNode }): ReactElement => {
 	// manually disable the logo on the home page.
-	const hideLogo = true && useSetting<boolean>('Layout_Login_Hide_Logo');
+	// const hideLogo = useSetting<boolean>('Layout_Login_Hide_Logo');
+	const hideLogo = true;
 	const customLogo = useAssetWithDarkModePath('logo');
 	const customBackground = useAssetWithDarkModePath('background');
 
