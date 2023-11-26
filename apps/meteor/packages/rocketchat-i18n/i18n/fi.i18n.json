@@ -5535,7 +5535,7 @@
   "registration.page.guest.chooseHowToJoin": "Valitse, miten haluat liittyä",
   "registration.page.guest.loginWithRocketChat": "Kirjaudu sisään Rocket.Chatilla",
   "registration.page.guest.continueAsGuest": "Jatka vieraana",
-  "registration.component.welcome": "Tervetuloa <1>Rocket.Chat</1>-työtilaan",
+  "registration.component.welcome": "Start to Chat with CoProduction.AI",
   "registration.component.login": "Kirjaudu",
   "registration.component.login.userNotFound": "Käyttäjää ei löydy",
   "registration.component.login.incorrectPassword": "Väärä salasana",

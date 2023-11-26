@@ -5241,7 +5241,7 @@
   "registration.page.registration.waitActivationWarning": "Zanim się zalogujesz, twoje konto musi być aktywowane przez administratora.",
   "registration.page.login.register": "Nowy? <1>Create an account</1>",
   "registration.page.resetPassword.sent": "Jeśli ten e-mail jest zarejestrowany, wyślemy instrukcje dotyczące resetowania hasła. Jeśli wkrótce nie otrzymasz e-maila, wróć i spróbuj ponownie.",
-  "registration.component.welcome": "Witamy w obszarze roboczym <1>Rocket.Chat</1>",
+  "registration.component.welcome": "Start to Chat with CoProduction.AI",
   "registration.component.login": "Zaloguj się",
   "registration.component.login.userNotFound": "Użytkownik nie znaleziony",
   "registration.component.resetPassword": "Zresetuj hasło",

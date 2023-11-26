@@ -5861,7 +5861,7 @@
   "registration.page.guest.chooseHowToJoin": "Choose how you want to join",
   "registration.page.guest.loginWithRocketChat": "Login with Rocket.Chat",
   "registration.page.guest.continueAsGuest": "Continue as guest",
-  "registration.component.welcome": "Welcome to <1>Rocket.Chat</1> workspace",
+  "registration.component.welcome": "Start to Chat with CoProduction.AI",
   "registration.component.login": "Login",
   "registration.component.login.userNotFound": "User not found",
   "registration.component.login.incorrectPassword": "Incorrect password",
