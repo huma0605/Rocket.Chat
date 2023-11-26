@@ -95,7 +95,6 @@ API.v1.addRoute(
 	{ authRequired: true },
 	{
 		async post() {
-
 			if (!isRoleCreateProps(this.bodyParams)) {
 				throw new Meteor.Error('error-invalid-role-properties', 'The role properties are invalid.');
 			}

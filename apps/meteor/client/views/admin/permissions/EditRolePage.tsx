@@ -10,7 +10,7 @@ import { ContextualbarFooter, ContextualbarScrollableContent } from '../../../co
 import GenericModal from '../../../components/GenericModal';
 import RoleForm from './RoleForm';
 
-const EditRolePage = ({ role }: { role?: IRole; }): ReactElement => {
+const EditRolePage = ({ role }: { role?: IRole }): ReactElement => {
 	const t = useTranslation();
 	const dispatchToastMessage = useToastMessageDispatch();
 	const setModal = useSetModal();
@@ -74,7 +74,7 @@ const EditRolePage = ({ role }: { role?: IRole; }): ReactElement => {
 			}
 		};
 
-		const deleteRoleMessage = t('Delete_Role_Warning')
+		const deleteRoleMessage = t('Delete_Role_Warning');
 
 		setModal(
 			<GenericModal
