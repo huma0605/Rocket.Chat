@@ -9,12 +9,13 @@ const HeaderUnstable = lazy(() => import('./HeaderUnstable'));
 
 const HeaderWrapper = (): ReactElement => {
 	const viewGPTsHeader = usePermission('view-gpts-sidebar-header');
-	const HeaderComponent = viewGPTsHeader ? GPTsHeader : Header;
+	const viewRocketChatDefaultsHeader = usePermission('view-rocket-chat-default-sidebar-header');
 
 	return (
 		<FeaturePreview feature='navigationBar'>
 			<FeaturePreviewOff>
-				<HeaderComponent />
+				{viewRocketChatDefaultsHeader && <Header />}
+				{viewGPTsHeader && <GPTsHeader />}
 			</FeaturePreviewOff>
 			<FeaturePreviewOn>
 				<HeaderUnstable />

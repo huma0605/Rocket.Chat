@@ -9,21 +9,21 @@ import GPTHomePage from './GPTHomePage';
 
 const HomePage = (): ReactElement => {
 	const canViewGPTHome = usePermission('view-gpts-home');
+	const canViewRocketChatDefaultHome = usePermission('view-rocket-chat-default-home');
+	const customOnly = useSetting('Layout_Custom_Body_Only');
+
 	useEffect(() => {
 		KonchatNotification.getDesktopPermission();
 	}, []);
 
-	const customOnly = useSetting('Layout_Custom_Body_Only');
+	const RocketChatDefaultHome = customOnly ? CustomHomePage : DefaultHomePage;
 
-	if (canViewGPTHome) {
-		return <GPTHomePage />;
-	}
-
-	if (customOnly) {
-		return <CustomHomePage />;
-	}
-
-	return <DefaultHomePage />;
+	return (
+		<>
+			{canViewRocketChatDefaultHome && <RocketChatDefaultHome />}
+			{canViewGPTHome && <GPTHomePage />};
+		</>
+	);
 };
 
 export default HomePage;
