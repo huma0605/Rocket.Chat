@@ -239,6 +239,12 @@ export type UsersEndpoints = {
 		};
 	};
 
+	'/v1/users.getBotUsers': {
+		GET: () => {
+			users: IUser[];
+		};
+	};
+
 	'/v1/users.getAvatarSuggestion': {
 		GET: () => {
 			suggestions: Record<string, AvatarServiceObject>;

@@ -8,14 +8,14 @@ import DefaultHomePage from './DefaultHomePage';
 import GPTHomePage from './GPTHomePage';
 
 const HomePage = (): ReactElement => {
-	const canViewGPTshome = usePermission('view-gpts-home');
+	const canViewGPTHome = usePermission('view-gpts-home');
 	useEffect(() => {
 		KonchatNotification.getDesktopPermission();
 	}, []);
 
 	const customOnly = useSetting('Layout_Custom_Body_Only');
 
-	if (canViewGPTshome) {
+	if (canViewGPTHome) {
 		return <GPTHomePage />;
 	}
 

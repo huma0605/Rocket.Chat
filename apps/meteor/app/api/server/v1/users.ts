@@ -83,6 +83,18 @@ API.v1.addRoute(
 );
 
 API.v1.addRoute(
+	'users.getBotUsers',
+	{ authRequired: true },
+	{
+		async get() {
+			const users = await Meteor.callAsync('getBotUsers');
+
+			return API.v1.success({ users });
+		},
+	},
+);
+
+API.v1.addRoute(
 	'users.update',
 	{ authRequired: true, twoFactorRequired: true, validateParams: isUsersUpdateParamsPOST },
 	{
