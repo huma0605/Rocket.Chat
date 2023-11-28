@@ -2,6 +2,7 @@ import type { ImEndpoints } from './im';
 
 export type DmEndpoints = {
 	'/v1/dm.create': ImEndpoints['/v1/im.create'];
+	'/v1/dm.create.agent': ImEndpoints['/v1/im.create.agent'];
 	'/v1/dm.delete': ImEndpoints['/v1/im.delete'];
 	'/v1/dm.close': ImEndpoints['/v1/im.close'];
 	'/v1/dm.counters': ImEndpoints['/v1/im.counters'];

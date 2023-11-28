@@ -5539,7 +5539,7 @@
   "registration.page.guest.chooseHowToJoin": "Välj hur du vill ansluta",
   "registration.page.guest.loginWithRocketChat": "Logga in med Rocket.Chat",
   "registration.page.guest.continueAsGuest": "Fortsätt som gäst",
-  "registration.component.welcome": "Välkommen till <1>Rocket.chat</1>",
+  "registration.component.welcome": "Start to Chat with CoProduction.AI",
   "registration.component.login": "Logga in",
   "registration.component.login.userNotFound": "Användare inte hittad",
   "registration.component.login.incorrectPassword": "Felaktigt lösenord",

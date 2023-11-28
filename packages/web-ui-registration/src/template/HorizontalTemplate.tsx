@@ -6,16 +6,17 @@ import {
 	HorizontalWizardLayoutTitle,
 	HorizontalWizardLayoutFooter,
 } from '@rocket.chat/layout';
-import { useSetting, useAssetWithDarkModePath } from '@rocket.chat/ui-contexts';
+import { useAssetWithDarkModePath } from '@rocket.chat/ui-contexts';
 import type { ReactElement, ReactNode } from 'react';
 
-import LoginPoweredBy from '../components/LoginPoweredBy';
 import LoginSwitchLanguageFooter from '../components/LoginSwitchLanguageFooter';
 import LoginTerms from '../components/LoginTerms';
 import { RegisterTitle } from '../components/RegisterTitle';
 
 const HorizontalTemplate = ({ children }: { children: ReactNode }): ReactElement => {
-	const hideLogo = useSetting<boolean>('Layout_Login_Hide_Logo');
+	// manually disable the logo on the home page.
+	// const hideLogo = useSetting<boolean>('Layout_Login_Hide_Logo');
+	const hideLogo = true;
 	const customLogo = useAssetWithDarkModePath('logo');
 	const customBackground = useAssetWithDarkModePath('background');
 
@@ -28,7 +29,6 @@ const HorizontalTemplate = ({ children }: { children: ReactNode }): ReactElement
 				<HorizontalWizardLayoutTitle>
 					<RegisterTitle />
 				</HorizontalWizardLayoutTitle>
-				<LoginPoweredBy />
 			</HorizontalWizardLayoutAside>
 			<HorizontalWizardLayoutContent>
 				{children}

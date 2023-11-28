@@ -10,7 +10,7 @@ import { ContextualbarFooter, ContextualbarScrollableContent } from '../../../co
 import GenericModal from '../../../components/GenericModal';
 import RoleForm from './RoleForm';
 
-const EditRolePage = ({ role, isEnterprise }: { role?: IRole; isEnterprise: boolean }): ReactElement => {
+const EditRolePage = ({ role }: { role?: IRole }): ReactElement => {
 	const t = useTranslation();
 	const dispatchToastMessage = useToastMessageDispatch();
 	const setModal = useSetModal();
@@ -74,7 +74,7 @@ const EditRolePage = ({ role, isEnterprise }: { role?: IRole; isEnterprise: bool
 			}
 		};
 
-		const deleteRoleMessage = isEnterprise ? t('Delete_Role_Warning') : t('Delete_Role_Warning_Community_Edition');
+		const deleteRoleMessage = t('Delete_Role_Warning');
 
 		setModal(
 			<GenericModal
@@ -95,14 +95,14 @@ const EditRolePage = ({ role, isEnterprise }: { role?: IRole; isEnterprise: bool
 				<Box w='full' alignSelf='center' mb='neg-x8'>
 					<Margins block={8}>
 						<FormProvider {...methods}>
-							<RoleForm editing={Boolean(role?._id)} isProtected={role?.protected} isDisabled={!isEnterprise} />
+							<RoleForm editing={Boolean(role?._id)} isProtected={role?.protected} isDisabled={false} />
 						</FormProvider>
 					</Margins>
 				</Box>
 			</ContextualbarScrollableContent>
 			<ContextualbarFooter>
 				<ButtonGroup vertical stretch>
-					<Button primary disabled={!methods.formState.isDirty || !isEnterprise} onClick={methods.handleSubmit(handleSave)}>
+					<Button primary disabled={!methods.formState.isDirty} onClick={methods.handleSubmit(handleSave)}>
 						{t('Save')}
 					</Button>
 					{!role?.protected && role?._id && (

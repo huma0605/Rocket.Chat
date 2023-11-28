@@ -17,6 +17,11 @@ export type ImEndpoints = {
 			room: IRoom & { rid: IRoom['_id'] };
 		};
 	};
+	'/v1/im.create.agent': {
+		POST: (params: DmCreateProps) => {
+			room: IRoom & { rid: IRoom['_id'] };
+		};
+	};
 	'/v1/im.delete': {
 		POST: (params: DmDeleteProps) => void;
 	};

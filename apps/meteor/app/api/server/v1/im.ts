@@ -15,6 +15,7 @@ import { Match, check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 
 import { createDirectMessage } from '../../../../server/methods/createDirectMessage';
+import { createDirectMessageToAgentBot } from '../../../../server/methods/createDirectMessageToAgentBot';
 import { hideRoomMethod } from '../../../../server/methods/hideRoom';
 import { canAccessRoomIdAsync } from '../../../authorization/server/functions/canAccessRoom';
 import { hasPermissionAsync } from '../../../authorization/server/functions/hasPermission';
@@ -83,6 +84,28 @@ API.v1.addRoute(
 					: this.bodyParams.usernames.split(',').map((username: string) => username.trim());
 
 			const room = await createDirectMessage(users, this.userId, this.bodyParams.excludeSelf);
+
+			return API.v1.success({
+				room: { ...room, _id: room.rid },
+			});
+		},
+	},
+);
+
+API.v1.addRoute(
+	['dm.create.agent', 'im.create.agent'],
+	{
+		authRequired: true,
+		validateParams: isDmCreateProps,
+	},
+	{
+		async post() {
+			const users =
+				'username' in this.bodyParams
+					? [this.bodyParams.username]
+					: this.bodyParams.usernames.split(',').map((username: string) => username.trim());
+
+			const room = await createDirectMessageToAgentBot(users, this.userId);
 
 			return API.v1.success({
 				room: { ...room, _id: room.rid },

@@ -1,5 +1,4 @@
 import type { IRole } from '@rocket.chat/core-typings';
-import { License } from '@rocket.chat/license';
 import { Roles } from '@rocket.chat/models';
 import Ajv from 'ajv';
 
@@ -96,10 +95,6 @@ API.v1.addRoute(
 	{ authRequired: true },
 	{
 		async post() {
-			if (!License.hasValidLicense()) {
-				throw new Meteor.Error('error-action-not-allowed', 'This is an enterprise feature');
-			}
-
 			if (!isRoleCreateProps(this.bodyParams)) {
 				throw new Meteor.Error('error-invalid-role-properties', 'The role properties are invalid.');
 			}
@@ -154,7 +149,7 @@ API.v1.addRoute(
 
 			const role = await Roles.findOne(roleId);
 
-			if (!License.hasValidLicense() && !role?.protected) {
+			if (!role?.protected) {
 				throw new Meteor.Error('error-action-not-allowed', 'This is an enterprise feature');
 			}
 
