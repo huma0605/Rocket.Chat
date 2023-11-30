@@ -38,6 +38,7 @@ import './methods/getRoomNameById';
 import './methods/getSetupWizardParameters';
 import './methods/getTotalChannels';
 import './methods/getBotUsers';
+import './methods/getCoWorkAgents';
 import './methods/getUsersOfRoom';
 import './methods/hideRoom';
 import './methods/ignoreUser';

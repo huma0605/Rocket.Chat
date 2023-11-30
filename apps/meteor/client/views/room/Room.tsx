@@ -1,4 +1,4 @@
-import { useTranslation } from '@rocket.chat/ui-contexts';
+import { useTranslation, usePermission } from '@rocket.chat/ui-contexts';
 import type { ReactElement } from 'react';
 import React, { createElement, lazy, memo, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -6,6 +6,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ContextualbarSkeleton } from '../../components/Contextualbar';
 import Header from './Header';
 import MessageHighlightProvider from './MessageList/providers/MessageHighlightProvider';
+import GPTRoomBody from './body/GPTRoomBody';
 import RoomBody from './body/RoomBody';
 import { useRoom } from './contexts/RoomContext';
 import { useRoomToolbox } from './contexts/RoomToolboxContext';
@@ -25,6 +26,20 @@ const Room = (): ReactElement => {
 
 	const contextualBarView = useAppsContextualBar();
 
+	const canViewGPTRoom = usePermission('view-gpts-room');
+
+	const canViewRocketChatDefaultRoom = usePermission('view-rocket-chat-default-room');
+
+	let DefaultBody = RoomBody;
+
+	if (canViewGPTRoom) {
+		DefaultBody = GPTRoomBody;
+	}
+
+	if (canViewRocketChatDefaultRoom) {
+		DefaultBody = RoomBody;
+	}
+
 	return (
 		<ChatProvider>
 			<MessageHighlightProvider>
@@ -32,7 +47,7 @@ const Room = (): ReactElement => {
 					aria-label={t('Channel')}
 					data-qa-rc-room={room._id}
 					header={<Header room={room} />}
-					body={<RoomBody />}
+					body={<DefaultBody />}
 					aside={
 						(toolbox.tab?.tabComponent && (
 							<ErrorBoundary fallback={null}>

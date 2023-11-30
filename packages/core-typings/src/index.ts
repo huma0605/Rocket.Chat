@@ -137,3 +137,5 @@ export * from './CustomFieldMetadata';
 export * as Cloud from './cloud';
 
 export * as UiKit from './uikit';
+
+export * from './IAgent';

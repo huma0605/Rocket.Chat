@@ -79,6 +79,7 @@ import type {
 	IMigrationsModel,
 	IModerationReportsModel,
 	ICloudAnnouncementsModel,
+	ICoWorkAgentsModel,
 } from '@rocket.chat/model-typings';
 
 import { proxify } from './proxify';
@@ -172,3 +173,4 @@ export const CronHistory = proxify<ICronHistoryModel>('ICronHistoryModel');
 export const Migrations = proxify<IMigrationsModel>('IMigrationsModel');
 export const ModerationReports = proxify<IModerationReportsModel>('IModerationReportsModel');
 export const CloudAnnouncements = proxify<ICloudAnnouncementsModel>('ICloudAnnouncementsModel');
+export const CoWorkAgents = proxify<ICoWorkAgentsModel>('ICoWorkAgentsModel');

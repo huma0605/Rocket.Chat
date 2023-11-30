@@ -4,6 +4,7 @@ import type { KeyOfEach } from '@rocket.chat/core-typings';
 import type { AppsEndpoints } from './apps';
 import type { DefaultEndpoints } from './default';
 import type { ReplacePlaceholders } from './helpers/ReplacePlaceholders';
+import type { AgentsEndpoints } from './v1/agents';
 import type { AssetsEndpoints } from './v1/assets';
 import type { AuthEndpoints } from './v1/auth';
 import type { AutoTranslateEndpoints } from './v1/autoTranslate';
@@ -99,6 +100,7 @@ export interface Endpoints
 		CalendarEndpoints,
 		AuthEndpoints,
 		ImportEndpoints,
+		AgentsEndpoints,
 		DefaultEndpoints {}
 
 type OperationsByPathPatternAndMethod<
