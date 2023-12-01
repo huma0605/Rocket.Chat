@@ -1,6 +1,5 @@
 import type { IMessage, IUser } from '@rocket.chat/core-typings';
 import { isEditedMessage } from '@rocket.chat/core-typings';
-import { Flex, Box, Button } from '@rocket.chat/fuselage';
 import {
 	usePermission,
 	useRole,
@@ -10,9 +9,7 @@ import {
 	useTranslation,
 	useUser,
 	useUserPreference,
-	useEndpoint,
 } from '@rocket.chat/ui-contexts';
-import { useQuery } from '@tanstack/react-query';
 import type { MouseEventHandler, ReactElement, UIEvent } from 'react';
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
@@ -40,6 +37,7 @@ import { useRoom, useRoomSubscription, useRoomMessages } from '../contexts/RoomC
 import { useRoomToolbox } from '../contexts/RoomToolboxContext';
 import { useScrollMessageList } from '../hooks/useScrollMessageList';
 import DropTargetOverlay from './DropTargetOverlay';
+import GPTStarter from './GPTStarter';
 import JumpToRecentMessageButton from './JumpToRecentMessageButton';
 import LeaderBar from './LeaderBar';
 import LoadingMessagesIndicator from './LoadingMessagesIndicator';
@@ -77,9 +75,6 @@ const RoomBody = (): ReactElement => {
 	const lastScrollTopRef = useRef(0);
 
 	const chat = useChat();
-
-	const agentsConfigs = useEndpoint('GET', '/v1/agents.configs');
-	const { data, isLoading } = useQuery([], async () => agentsConfigs('dr_optica'));
 
 	if (!chat) {
 		throw new Error('No ChatContext provided');
@@ -538,17 +533,6 @@ const RoomBody = (): ReactElement => {
 
 	useReadMessageWindowEvents();
 
-	const handleStarterClick = async (starter: string) => {
-		const text: string = starter;
-		try {
-			await chat?.flows.sendMessage({
-				text,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	return (
 		<>
 			{!isLayoutEmbedded && room.announcement && <Announcement announcement={room.announcement} announcementDetails={undefined} />}
@@ -641,19 +625,7 @@ const RoomBody = (): ReactElement => {
 									</MessageListErrorBoundary>
 								</div>
 							</div>
-							{!isLoading && room.msgs === 0 && (
-								<Box is='div' className='gpt-starter-container' display='flex' justifyContent='center' flexDirection='column'>
-									<Flex.Item grow={1}>
-										<Box display='flex' color='default' fontScale='h4' justifyContent='center' flexWrap='wrap'>
-											{data?.agents?.[0].starters.map((starter, index) => (
-												<Button margin='20px 10px' key={index} onClick={() => handleStarterClick(starter)}>
-													{starter}
-												</Button>
-											))}
-										</Box>
-									</Flex.Item>
-								</Box>
-							)}
+							{room?.name && <GPTStarter username={room.name} messageSize={room.msgs} />}
 							<RoomComposer>
 								<ComposerContainer
 									rid={room._id}
